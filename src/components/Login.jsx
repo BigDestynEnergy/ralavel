@@ -9,7 +9,7 @@ const domains = [
         }, 2000)
     }
   function handleLogin() {
-    const isAuthenticated = false;
+    let isAuthenticated = false;
     if(email === ''){
         showNote('Enter your email')
     } else if(!domains.some(domain => email.toLowerCase().endsWith(`@${domain}`))){
@@ -20,10 +20,13 @@ showNote('Enter your password')
     } else if(password.length < 10){
         showNote('Password must include at least 10 characters')
     }
-     else if (isAuthenticated) {
+     else{
+        showNote('Login successful')
+        setTimeout(()=>{
+              setEmail('')
+        setPassword('')
       setScreen("home");
-    } else {
-      setNote("Bestie… log in properly.");
+        }, 2000)
     }
   }
 
